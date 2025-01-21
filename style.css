@@ -1,41 +1,57 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  .card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  p {
-    font-size: 1rem;
-    color: #555;
-    margin: 5px 0;
-  }
-  
-  ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    text-align: left;
-  }
-  
-  ul li {
-    font-size: 0.9rem;
-    color: #555;
-  }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 400px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .card h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin: 8px 0;
+      color: #555;
+    }
+
+    .card p span {
+      font-weight: bold;
+      color: #000;
+    }
+
+    .tasks {
+      margin-top: 15px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 5px;
+    }
+
+    .tasks ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .tasks ul li {
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
   
