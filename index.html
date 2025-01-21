@@ -1,36 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intern Details</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intern Details</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="card">
-        <h1>CodTech IT Solutions</h1>
-        <div id="details"></div>
+  <div class="card">
+    <h1>Intern Details</h1>
+    <p><span>Name:</span> <span id="name">Loading...</span></p>
+    <p><span>ID:</span> <span id="id">Loading...</span></p>
+    <p><span>Domain:</span> <span id="domain">Loading...</span></p>
+    <p><span>Duration:</span> <span id="duration">Loading...</span></p>
+    <div class="tasks">
+      <h3>Tasks:</h3>
+      <ul id="tasks">
+        <li>Loading...</li>
+      </ul>
     </div>
+  </div>
 
-    <script>
-        // Extract query parameters
-        const params = new URLSearchParams(window.location.search);
-        const name = params.get("name");
-        const id = params.get("id");
-        const domain = params.get("domain");
-        const duration = params.get("duration");
-        const tasks = params.get("tasks") ? params.get("tasks").split(",") : [];
+  <script>
+    function decodeData() {
+      const params = new URLSearchParams(window.location.search);
+      const encodedData = params.get("data");
 
-        // Display details dynamically
-        const detailsDiv = document.getElementById("details");
-        detailsDiv.innerHTML = `
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>ID:</strong> ${id}</p>
-            <p><strong>Domain:</strong> ${domain}</p>
-            <p><strong>Duration:</strong> ${duration}</p>
-            <p><strong>Tasks:</strong></p>
-            <ul>${tasks.map(task => `<li>${task}</li>`).join("")}</ul>
-        `;
-    </script>
+      if (encodedData) {
+        try {
+          const decodedData = JSON.parse(atob(encodedData)); // Decode base64 and parse JSON
+          document.getElementById("name").textContent = decodedData.name || "N/A";
+          document.getElementById("id").textContent = decodedData.id || "N/A";
+          document.getElementById("domain").textContent = decodedData.domain || "N/A";
+          document.getElementById("duration").textContent = decodedData.duration || "N/A";
+
+          const tasksList = document.getElementById("tasks");
+          tasksList.innerHTML = ""; // Clear existing placeholder tasks
+          if (decodedData.tasks && decodedData.tasks.length > 0) {
+            decodedData.tasks.forEach(task => {
+              const li = document.createElement("li");
+              li.textContent = task || "N/A";
+              tasksList.appendChild(li);
+            });
+          } else {
+            tasksList.innerHTML = "<li>No tasks available</li>";
+          }
+        } catch (error) {
+          console.error("Failed to decode data:", error);
+          alert("Failed to load intern details. Please check the URL.");
+        }
+      } else {
+        alert("No data found in the URL.");
+      }
+    }
+
+    // Call decodeData on page load
+    window.onload = decodeData;
+  </script>
 </body>
 </html>
