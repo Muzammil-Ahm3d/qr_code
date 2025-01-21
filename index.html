@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intern Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <h1>CodTech IT Solutions</h1>
+        <div id="details"></div>
+    </div>
+
+    <script>
+        // Extract query parameters
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get("name");
+        const id = params.get("id");
+        const domain = params.get("domain");
+        const duration = params.get("duration");
+        const tasks = params.get("tasks") ? params.get("tasks").split(",") : [];
+
+        // Display details dynamically
+        const detailsDiv = document.getElementById("details");
+        detailsDiv.innerHTML = `
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>ID:</strong> ${id}</p>
+            <p><strong>Domain:</strong> ${domain}</p>
+            <p><strong>Duration:</strong> ${duration}</p>
+            <p><strong>Tasks:</strong></p>
+            <ul>${tasks.map(task => `<li>${task}</li>`).join("")}</ul>
+        `;
+    </script>
+</body>
+</html>
