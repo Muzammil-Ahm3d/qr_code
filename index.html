@@ -4,20 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Intern Details</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style1.css">
 </head>
 <body>
-  <div class="card">
-    <h1>Intern Details</h1>
-    <p><span>Name:</span> <span id="name">Loading...</span></p>
-    <p><span>ID:</span> <span id="id">Loading...</span></p>
-    <p><span>Domain:</span> <span id="domain">Loading...</span></p>
-    <p><span>Duration:</span> <span id="duration">Loading...</span></p>
-    <div class="tasks">
-      <h3>Tasks:</h3>
-      <ul id="tasks">
-        <li>Loading...</li>
-      </ul>
+  <div class="card-container">
+    <div class="card">
+      <!-- Front Side -->
+      <div class="card-front">
+        <h1>Intern Details</h1>
+        <p><span>Name:</span> <span id="name">Loading...</span></p>
+        <p><span>ID:</span> <span id="id">Loading...</span></p>
+        <p><span>Domain:</span> <span id="domain">Loading...</span></p>
+        <p><span>Duration:</span> <span id="duration">Loading...</span></p>
+        <div class="tasks">
+          <h3>Tasks:</h3>
+          <ul id="tasks">
+            <li>Loading...</li>
+          </ul>
+        </div>
+        <div class="arrow" onclick="flipCard()">⟶</div>
+      </div>
+      <!-- Back Side -->
+      <div class="card-back">
+        <h2>Thank You!</h2>
+        <p>We appreciate your hard work and dedication!</p>
+        <p>Welcome to the team at <strong>CodTechITSolutions!</strong></p>
+        <div class="arrow" onclick="flipCard()">⟶</div>
+      </div>
     </div>
   </div>
 
@@ -28,14 +41,14 @@
 
       if (encodedData) {
         try {
-          const decodedData = JSON.parse(atob(encodedData)); // Decode base64 and parse JSON
+          const decodedData = JSON.parse(atob(encodedData));
           document.getElementById("name").textContent = decodedData.name || "N/A";
           document.getElementById("id").textContent = decodedData.id || "N/A";
           document.getElementById("domain").textContent = decodedData.domain || "N/A";
           document.getElementById("duration").textContent = decodedData.duration || "N/A";
 
           const tasksList = document.getElementById("tasks");
-          tasksList.innerHTML = ""; // Clear existing placeholder tasks
+          tasksList.innerHTML = "";
           if (decodedData.tasks && decodedData.tasks.length > 0) {
             decodedData.tasks.forEach(task => {
               const li = document.createElement("li");
@@ -54,7 +67,10 @@
       }
     }
 
-    // Call decodeData on page load
+    function flipCard() {
+      document.querySelector(".card").classList.toggle("flipped");
+    }
+
     window.onload = decodeData;
   </script>
 </body>
