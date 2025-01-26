@@ -17,8 +17,6 @@ body {
   max-width: 350px; 
   margin-top: 50px; /* Space from top */
   flex: 1; /* Allow card-container to grow and push footer down */
-  display: flex;
-  flex-direction: column;
 }
 
 .card {
@@ -26,7 +24,6 @@ body {
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s;
-  overflow: auto;
 }
 
 .card.flipped {
@@ -55,7 +52,7 @@ body {
 
 .card-back {
   transform: rotateY(180deg);
-  background: #88dfff;
+  background: #68d7ff;
   text-align: center;
 }
 
@@ -130,7 +127,6 @@ body {
   width: 100%;
   font-size: 0.9rem;
   position: relative; /* Keeps the footer at the bottom naturally */
-  margin-top: auto;
 }
 
 .footer a {
