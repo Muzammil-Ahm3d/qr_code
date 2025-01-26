@@ -127,6 +127,7 @@ body {
   width: 100%;
   font-size: 0.9rem;
   position: relative; /* Keeps the footer at the bottom naturally */
+  margin-top: auto;
 }
 
 .footer a {
